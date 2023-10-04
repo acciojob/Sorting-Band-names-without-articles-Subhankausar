@@ -1,20 +1,20 @@
-// Suppose you have an array of band names
-let bandNames = ['The Beatles', 'Led Zeppelin', 'Pink Floyd', 'The Rolling Stones', 'Aerosmith'];
-
-// Function to remove articles ('a', 'an', 'the') from band names
-function removeArticles(name) {
-  return name.replace(/^(a |an |the )/i, '').trim();
+let bandNames=['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal']
+let articles = ['A', 'AN', 'THE']
+ 
+	bandNames.sort((a,b) => (strip(a)> strip(b))? 1: -1)
+	const ref= document.getElementsByTagName("ul")[0] 
+	for (let i=0;i<bandNames.length; i++){
+		const li = document.createElement("li")
+		li.innerText= bandNames [i]
+		ref.append(li)
+	}
+function strip(word){
+	let arr = word.split(" ")
+	let s=""
+	for(let i=0;i<arr.length;i++){
+if(articles.indexOf(arr[i].toUpperCase()) === -1){
+	s=s+arr[i]
 }
-
-// Sort the band names without articles
-bandNames.sort((a, b) => removeArticles(a).localeCompare(removeArticles(b)));
-
-// Get a reference to the ul element in your HTML
-const ul = document.querySelector('#bands');
-
-// Loop through the sorted band names and add them as list items to the ul
-bandNames.forEach((name) => {
-  const li = document.createElement('li');
-  li.textContent = name;
-  ul.appendChild(li);
-});
+}
+return s.trim()
+}
